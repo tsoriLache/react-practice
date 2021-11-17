@@ -15,7 +15,7 @@ class List extends React.Component {
             <ListItem
               key={'' + index}
               item={item}
-              itemClick={this.props.itemClick}
+              liClick={this.props.liClick}
             />
           );
         })}

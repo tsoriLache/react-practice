@@ -31,7 +31,7 @@ class Main extends React.Component {
     };
     // this.handleClick = this.handleClick.bind(this);
   }
-  itemClick = ({ target }) => {
+  groceryItemClick = ({ target }) => {
     const item = target.innerText;
     // Create a new array based on current state:
     const basketItems = [...this.state.basketItems];
@@ -45,11 +45,17 @@ class Main extends React.Component {
       <main className={'Main'}>
         <div>
           <h1>Groceries</h1>
-          <List items={this.state.groceriesItems} itemClick={this.itemClick} />
+          <List
+            items={this.state.groceriesItems}
+            liClick={this.groceryItemClick}
+          />
         </div>
         <div>
           <h1>Basket</h1>
-          <List items={this.state.basketItems} />
+          <List
+            items={this.state.basketItems}
+            // liClick={this.basketItemClick}
+          />
         </div>
       </main>
     );
