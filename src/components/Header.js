@@ -6,8 +6,8 @@ class Header extends React.Component {
   render() {
     return (
       <section className={'Header'}>
-        <h1>Hello, Header</h1>;
         <img src={icon} alt="basket-icon" />
+        <h1>Hello, Header</h1>;
       </section>
     );
   }
