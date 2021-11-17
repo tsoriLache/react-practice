@@ -50,16 +50,15 @@ class Main extends React.Component {
     }
     this.setState({ basketItems: newBasket });
   };
-  // basketItemClick = ({ target }) => {
-  //   const removeItem = target.innerText;
-  //   this.setState((prevState) => ({
-  //     basketItems: [
-  //       prevState.basketItems.filter((item) => {
-  //         return item !== removeItem;
-  //       }),
-  //     ],
-  //   }));
-  // };
+
+  basketItemClick = ({ target }) => {
+    const removeItem = target.innerText;
+    const newBasket = this.state.basketItems.filter(
+      ({ item }) => item !== removeItem.split(' ')[1]
+    );
+    this.setState({ basketItems: newBasket });
+  };
+
   render() {
     return (
       <main className={'Main'}>
@@ -76,7 +75,7 @@ class Main extends React.Component {
             items={this.state.basketItems.map((obj) => {
               return `${obj.quantity} ${obj.item} `;
             })}
-            // liClick={this.basketItemClick}
+            liClick={this.basketItemClick}
           />
         </div>
       </main>
