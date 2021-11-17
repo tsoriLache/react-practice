@@ -5,10 +5,7 @@ class Main extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      basketItems: [
-        { item: 'Strawberry', quantity: 1 },
-        { item: 'Blueberry', quantity: 4 },
-      ],
+      basketItems: [],
       groceriesItems: [
         'Strawberry',
         'Blueberry',
@@ -72,8 +69,8 @@ class Main extends React.Component {
         <div>
           <h1>Basket</h1>
           <List
-            items={this.state.basketItems.map((obj) => {
-              return `${obj.quantity} ${obj.item} `;
+            items={this.state.basketItems.map(({ quantity, item }) => {
+              return `${quantity} ${item} `;
             })}
             liClick={this.basketItemClick}
           />
