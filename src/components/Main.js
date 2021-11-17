@@ -1,4 +1,5 @@
 import React from 'react';
+import Header from './Header';
 import List from './List';
 
 class Main extends React.Component {
@@ -33,9 +34,8 @@ class Main extends React.Component {
   }
 
   //ask code review for best practice
-  groceryItemClick = ({ target }) => {
+  groceryItemClick = (item) => {
     let newBasket;
-    const item = target.innerText;
     const itemIndex = this.state.basketItems.findIndex(
       (obj) => obj.item === item
     );
@@ -48,8 +48,7 @@ class Main extends React.Component {
     this.setState({ basketItems: newBasket });
   };
 
-  basketItemClick = ({ target }) => {
-    const removeItem = target.innerText;
+  basketItemClick = (removeItem) => {
     const newBasket = this.state.basketItems.filter(
       ({ item }) => item !== removeItem.split(' ')[1]
     );
@@ -60,14 +59,14 @@ class Main extends React.Component {
     return (
       <main className={'Main'}>
         <div>
-          <h1>Groceries</h1>
+          <Header text="Groceries" icon="📝" className="list-header" />
           <List
             items={this.state.groceriesItems}
             liClick={this.groceryItemClick}
           />
         </div>
         <div>
-          <h1>Basket</h1>
+          <Header text="Basket" icon="🍉🥝🍌" className="list-header" />
           <List
             items={this.state.basketItems.map(({ quantity, item }) => {
               return `${quantity} ${item} `;

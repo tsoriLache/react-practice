@@ -5,7 +5,7 @@ import Footer from './components/Footer';
 function App() {
   return (
     <div className="App">
-      <Header />
+      <Header text="shopping list" icon="🛒" className="Header" />
       <Main />
       <Footer />
     </div>
