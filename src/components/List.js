@@ -11,7 +11,13 @@ class List extends React.Component {
     return (
       <ul>
         {this.props.items.map((item, index) => {
-          return <ListItem key={'' + index} item={item} />;
+          return (
+            <ListItem
+              key={'' + index}
+              item={item}
+              itemClick={this.props.itemClick}
+            />
+          );
         })}
       </ul>
     );

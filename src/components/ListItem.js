@@ -7,7 +7,7 @@ class ListItem extends React.Component {
     // this.handleClick = this.handleClick.bind(this);
   }
   render() {
-    return <li>{this.props.item}</li>;
+    return <li onClick={this.props.itemClick}>{this.props.item}</li>;
   }
 }
 

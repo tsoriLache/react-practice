@@ -31,13 +31,26 @@ class Main extends React.Component {
     };
     // this.handleClick = this.handleClick.bind(this);
   }
+  itemClick = ({ target }) => {
+    const item = target.innerText;
+    // Create a new array based on current state:
+    const basketItems = [...this.state.basketItems];
+    // Add item to it
+    basketItems.push(item);
+    // Set state
+    this.setState({ basketItems });
+  };
   render() {
     return (
-      <main>
-        <h1>Groceries</h1>
-        <List items={this.state.groceriesItems} />
-        <h1>Basket</h1>
-        <List items={this.state.basketItems} />
+      <main className={'Main'}>
+        <div>
+          <h1>Groceries</h1>
+          <List items={this.state.groceriesItems} itemClick={this.itemClick} />
+        </div>
+        <div>
+          <h1>Basket</h1>
+          <List items={this.state.basketItems} />
+        </div>
       </main>
     );
   }
