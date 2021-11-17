@@ -1,8 +1,15 @@
 import React from 'react';
+import './styles/Header.css';
+import icon from '../basketIcon.jpeg';
 
 class Header extends React.Component {
   render() {
-    return <h1>Hello, Header</h1>;
+    return (
+      <section className={'Header'}>
+        <h1>Hello, Header</h1>;
+        <img src={icon} alt="basket-icon" />
+      </section>
+    );
   }
 }
 
