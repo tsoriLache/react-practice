@@ -5,7 +5,10 @@ class Main extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      basketItems: [{ Strawberry: 1 }, { Blueberry: 3 }],
+      basketItems: [
+        { item: 'Strawberry', quantity: 1 },
+        { item: 'Blueberry', quantity: 4 },
+      ],
       groceriesItems: [
         'Strawberry',
         'Blueberry',
@@ -31,12 +34,21 @@ class Main extends React.Component {
     };
     // this.handleClick = this.handleClick.bind(this);
   }
+
+  //ask code review for best practice
   groceryItemClick = ({ target }) => {
+    let newBasket;
     const item = target.innerText;
-    console.log(item);
-    this.setState((prevState) => ({
-      basketItems: [...prevState.basketItems, { item: 1 }],
-    }));
+    const itemIndex = this.state.basketItems.findIndex(
+      (obj) => obj.item === item
+    );
+    if (itemIndex < 0) {
+      newBasket = [...this.state.basketItems, { item, quantity: 1 }];
+    } else {
+      newBasket = [...this.state.basketItems];
+      newBasket[itemIndex].quantity += 1;
+    }
+    this.setState({ basketItems: newBasket });
   };
   // basketItemClick = ({ target }) => {
   //   const removeItem = target.innerText;
@@ -62,7 +74,7 @@ class Main extends React.Component {
           <h1>Basket</h1>
           <List
             items={this.state.basketItems.map((obj) => {
-              return Object.keys(obj)[0];
+              return `${obj.quantity} ${obj.item} `;
             })}
             // liClick={this.basketItemClick}
           />
