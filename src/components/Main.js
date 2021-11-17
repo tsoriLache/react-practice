@@ -5,7 +5,7 @@ class Main extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      basketItems: [],
+      basketItems: [{ Strawberry: 1 }, { Blueberry: 3 }],
       groceriesItems: [
         'Strawberry',
         'Blueberry',
@@ -33,13 +33,21 @@ class Main extends React.Component {
   }
   groceryItemClick = ({ target }) => {
     const item = target.innerText;
-    // Create a new array based on current state:
-    const basketItems = [...this.state.basketItems];
-    // Add item to it
-    basketItems.push(item);
-    // Set state
-    this.setState({ basketItems });
+    console.log(item);
+    this.setState((prevState) => ({
+      basketItems: [...prevState.basketItems, { item: 1 }],
+    }));
   };
+  // basketItemClick = ({ target }) => {
+  //   const removeItem = target.innerText;
+  //   this.setState((prevState) => ({
+  //     basketItems: [
+  //       prevState.basketItems.filter((item) => {
+  //         return item !== removeItem;
+  //       }),
+  //     ],
+  //   }));
+  // };
   render() {
     return (
       <main className={'Main'}>
@@ -53,7 +61,9 @@ class Main extends React.Component {
         <div>
           <h1>Basket</h1>
           <List
-            items={this.state.basketItems}
+            items={this.state.basketItems.map((obj) => {
+              return Object.keys(obj)[0];
+            })}
             // liClick={this.basketItemClick}
           />
         </div>
