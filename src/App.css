@@ -1,5 +1,11 @@
 .App {
   background-color: bisque;
   display: grid;
-  grid-template-rows: 5fr 8fr 1fr;
+  grid-template-rows: 3fr 8fr 1fr;
+}
+
+.Main {
+  margin: 5vw;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
 }
