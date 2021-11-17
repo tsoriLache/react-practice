@@ -1,8 +1,15 @@
 import React from 'react';
+import List from './List';
 
 class Main extends React.Component {
   render() {
-    return <h1>Hello, main</h1>;
+    return (
+      <main>
+        Hello, main
+        <List items={['b1', 'b2', 'b3']} />
+        <List items={['b1', 'b2', 'b3']} />
+      </main>
+    );
   }
 }
 
